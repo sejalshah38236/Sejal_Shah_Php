@@ -1,0 +1,18 @@
+body {
+  background-color: yellow;
+  text-align: center;
+
+}
+h1 {
+  color: rgb(100 , 56 , 23);
+
+}
+p {
+  color:red;
+  border: 2px solid black;
+  padding: 20px;
+}
+strong{color:green;}
+del{
+	color:purple;
+}
