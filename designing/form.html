@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid black;
+            box-shadow: 1px;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+        
+        input[type=submit] {
+            background-color: BLACK;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+     .container {
+            width: 100%;
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+
+
+            
+        }
+        
+        .col-25 {
+            float: left;
+            width: 15%;
+            margin-top: 6px;
+        }
+        
+        .col-75 {
+            float: left;
+            width: 40%;
+            margin-top: 6px;
+        }
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .right {
+            padding-right: 15%;
+        }
+        
+        .left {
+            padding-left: 15%;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #808000">
+
+
+    <div class="right left">
+        <h2>Step 1: Your Details</h2>
+        <div class="container">
+            <form action="/action_page.php">
+                <div class="row">
+                    <div class="col-25      ">
+                        <label for="fname"> Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="firstname" placeholder="first and last name.">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="email" id="email" name="email" placeholder="ex. name23@gmail.com">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Phone</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone no" >
+                    </div>
+                </div>
+        </div>
+
+        <h2>Step 2: Delivery Details</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-25">
+                    <label for="address">Address</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="address" name="address" placeholder="Address" style="height:100px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="postcode">Postcode</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="postcode">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="country">Country</label>
+                </div>
+                <div class="col-75">
+                    <select id="country" name="country">
+                    <option value="australia">India</option>         
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+                </div>
+            </div>
+        </div>
+        <h2>Step 3: Cards Details</h2>
+        <div class="container">
+            <form action="/action_page.php">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="card-detsails">Card Type</label>
+                    </div>
+                    <div class="col-75">
+
+                        <input type="radio" id="card-detsails" name="Card Type"><i class="fa fa-cc-visa" style="font-size:24px"></i> VISA
+
+                        <input type="radio" id="card-detsails" name="Card Type"> <i class="fa fa-cc-amex" style="font-size:24px"></i> AmEx
+                        <input type="radio" id="card-detsails" name="Card Type"> <i class="fa fa-cc-mastercard" style="font-size:24px"></i> Mastercard
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="card-number">Card Number</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="card-number" name="cardnumber" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Security Code</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="lname" name="securitycode" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Name on card</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="lname" name="lastname" placeholder="Exact name on the card">
+                    </div>
+                </div>
+        </div>
+
+        <div class=" center">
+            <input type="submit" value="Submit">
+        </div>
+
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
