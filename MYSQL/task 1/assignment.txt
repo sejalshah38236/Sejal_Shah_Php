@@ -1,0 +1,114 @@
+//create database
+CREATE DATABASE assignment;
+Task - 1
+// CREATE TABLE EMPLOYEE
+
+CREATE TABLE employee(em_id int(20) AUTO_INCREMENT PRIMARY KEY , first_name varchar(50) not null , last_name varchar(50) not null , salary int(50) not null , 
+joining_date datetime not null , department varchar(50) not null);
+
+//INSERT EMPLOYEE DATA
+INSERT INTO employee(em_id , first_name , last_name ,salary , joining_date, department ) VALUES ('1', 'JOHN' , 'ABRAHAM' ,'1000000', '2013-01-01' , 'BANKING');
+                               
+INSERT INTO employee(em_id , first_name , last_name ,salary , joining_date, department ) VALUES ('2' , 'MICHAEL' , 'CLERK',
+'800000' , '2013-01-01', 'INSURANCE' ) , ('3' ,'ROY' , 'THOMAS' , '700000' ,'2013-02-01', 'BANKING' ) ;
+
+CREATE PROCEDURE INSERT_employee(
+    em_id  int(20), 
+    first_name varchar(50),
+    last_name varchar(50) , 
+    salary int(50),
+    joining_date datetime ,
+    department varchar(50))
+    
+    BEGIN 
+    		INSERT INTO employee(em_id , first_name , last_name , salary , joining_date , department ) VALUES
+            			         (em_id , first_name , last_name , salary , joining_date , department ); 
+    END
+
+CALL INSERT_employee( '4', 'TOM' , 'JOSE', '600000', '2013-02-01', 'INSURANCE') ;  
+CALL INSERT_employee( '5', 'JERRY' , 'PINTO', '650000', '2013-01-01', 'INSURANCE');
+CALL INSERT_employee( '6', 'PHILIP' , 'MATHEW', '750000', '2013-01-01', 'SERVICES');
+CALL INSERT_employee( '7', 'TESTNAME1' , '123', '650000', '2013-01-01', 'SERVICES');   
+CALL INSERT_employee( '8', 'TESTNAME2' , 'LNAME%', '600000', '2013-02-01', 'INSURANCE')       
+
+//CREATE TABLE INCENTIVES
+CREATE TABLE incentives(incentive_id int(20) PRIMARY KEY AUTO_INCREMENT , employee_ref_id int(20) NOT null , incentive_date date not null ,
+ incentive_amt int(50) NOT null,  FOREIGN KEY (employee_ref_id) REFERENCES employee(em_id));
+     
+//INSERT INCENTIVES DATA
+
+CREATE PROCEDURE insert_incentives( IN incentive_id int(20), IN employee_ref_id int(20), IN incentive_date date, IN incentive_amt int(50) ) 
+BEGIN 
+INSERT INTO incentives(incentive_id,employee_ref_id,incentive_date,incentive_amt)values(incentive_id,employee_ref_id,incentive_date,incentive_amt); 
+END//
+CALL INSERT_incentives( '1', '1' , '2013-02-01','5000');
+CALL INSERT_incentives( '2', '2' , '2013-02-01','3000');
+CALL INSERT_incentives( '3', '3' , '2013-02-01','4000');
+CALL INSERT_incentives( '4', '1' , '2013-01-01','4500');
+CALL INSERT_incentives( '5', '2' , '2013-01-01','3500');
+
+
+a) Get First_Name from employee table using alias name “Employee Name”.
+  SELECT first_name AS Employee_Name FROM employee;
+
+b) Get FIRST_NAME, Joining year, Joining Month and Joining Date from employee table. 
+  SELECT first_name , joining_date FROM employee;
+
+c) Get all employee details from the employee table order by First Name Ascending And Salary descending? 
+ SELECT * FROM employee ORDER BY salary DESC;
+
+d)Get employee details from employee table whose first name contains „o‟. 
+ SELECT * FROM employee WHERE first_name LIKE 'O'
+
+e)Get employee details from employee table whose joining month is “January”. 
+ select * from employee WHERE DATE_FORMAT(joining_date,"%M")="January";
+
+f)Get department, total salary with respect to a department from employee table Order By total salary descending. 
+   SELECT department , SUM(salary) salary FROM employee GROUP BY department ORDER BY salary DESC;
+
+g)Get department wise maximum salary from employee table order by salary ascending? 
+   SELECT department, MAX(salary) salary FROM employee GROUP BY department ORDER BY salary ASC;
+
+h)Select first_name, incentive amount from employee and incentives table for those Employees who have incentives and incentive amount greater than 3000 
+   SELECT first_name , incentive_amt FROM employee A INNER JOIN incentives B ON A.em_id=B.employee_ref_id WHERE incentive_amt > 3000
+
+i) Select 2nd Highest salary from employee table. 
+   SELECT * FROM employee GROUP BY salary ORDER BY salary desc limit 1,1;
+
+j)Select first_name, incentive amount from employee and incentives table for all Employees who got incentives using left join. 
+   SELECT first_name , incentive_amt
+   FROM employee A INNER JOIN incentives B
+   ON A.em_id=B.employee_ref_id;
+
+k)Create View OF Employee table in which store first name, last name and salary only. 
+   CREATE VIEW employee_view AS SELECT first_name , last_name , salary FROM employee;
+
+l) Create Procedure to find out department wise highest salary.
+
+CREATE PROCEDURE insert_emp()
+BEGIN
+    
+    SELECT department, max(salary) FROM employee GROUP BY department;
+END
+CALL insert_emp();
+
+
+m) Create after Insert trigger on Employee table which insert records in view table. 
+	
+
+CREATE TABLE reg_log(
+reg_id int AUTO_INCREMENT PRIMARY KEY,
+em_id int(20),
+first_name varchar(50),
+last_name varchar(50),
+salary int(50),
+modified_dt date,
+ CONSTRAINT PK_reg reg_id PRIMARY KEY(reg_id)
+)
+
+CREATE TRIGGER insert_trigger_employee AFTER INSERT ON employee FOR EACH ROW 
+BEGIN 
+	INSERT INTO reg_log(em_id ,first_name,last_name ,salary,joining_date,department ,modified_dt )VALUES
+    (em_id ,first_name,last_name ,salary,joining_date,department ,modified_dt)
+END
+    
