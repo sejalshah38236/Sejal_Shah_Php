@@ -124,21 +124,36 @@
     <div class="container-fluid bg-white pt-3 px-lg-5">
         <div class="row mx-n2">
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select class="custom-select px-4 mb-3" style="height: 50px;">
-                    <option selected>Pickup Location</option>
-                    <option value="1">Location 1</option>
-                    <option value="2">Location 2</option>
-                    <option value="3">Location 3</option>
-                </select>
+                <select class="form-control" id="c_name" name="c_id">
+                        <option>Select Country</option>
+                        <?php 
+                        foreach($country as $d)
+                        {
+                        ?>
+                            <option value="<?php echo $d->c_name?>">
+                                <?php echo $d->c_name?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select class="custom-select px-4 mb-3" style="height: 50px;">
-                    <option selected>Drop Location</option>
-                    <option value="1">Location 1</option>
-                    <option value="2">Location 2</option>
-                    <option value="3">Location 3</option>
-                </select>
+                <select class="form-control" id="city_name" name="city_id">
+                        <option>Select City</option>
+                        <?php 
+                        foreach($city as $d)
+                        {
+                        ?>
+                            <option value="<?php echo $d->city_name?>">
+                                <?php echo $d->city_name?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
             </div>
+
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <div class="date mb-3" id="date" data-target-input="nearest">
                     <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
@@ -152,12 +167,19 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select class="custom-select px-4 mb-3" style="height: 50px;">
-                    <option selected>Select A Bike</option>
-                    <option value="1">Bike 1</option>
-                    <option value="2">Bike 1</option>
-                    <option value="3">Bike 1</option>
-                </select>
+                <select class="form-control" id="cat_name" name="cat_id">
+                        <option>Select Bike</option>
+                        <?php 
+                        foreach($category as $d)
+                        {
+                        ?>
+                            <option value="<?php echo $d->cat_name?>">
+                                <?php echo $d->cat_name?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button>

@@ -15,6 +15,9 @@ class control extends model   // step 2
 		{
 		
 			case '/index':
+			$country=$this->select('country');
+			$city=$this->select('city');
+			$category=$this->select('category');
 			include_once('index.php');
 			break;
 			

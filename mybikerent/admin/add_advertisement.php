@@ -33,13 +33,19 @@ include_once('header.php');
 								<label>Vehicle Number</label>
 								<input class="form-control" type="Number" />
 								<p class="help-block">Help text here.</p>
-							</div>
-
+							</div> 	
 							<div class="form-group">
-								<label>Vehicle Number</label>
-								<input class="form-control" type="Number" />
+								<label>RC Book</label>
+								<input class="form-control" type="file" />
 								<p class="help-block">Help text here.</p>
-							</div>                            
+							</div>
+							<div class="form-group">
+								<label>Vehicle Pickup Address</label>
+								<input class="form-control" type="text" />
+								<texarea class="help-block">Help text here.</texarea>
+							</div> 	
+
+							                           
                             
                             <hr />
                             <div class="form-group">

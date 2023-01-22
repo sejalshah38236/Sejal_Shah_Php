@@ -27,8 +27,9 @@ include_once('header.php');
                                             <th>Drive Type</th>
                                             <th>Vehicle No</th>
                                             <th>rc book</th>
-                                            <th>Vehicle Pickup Addr
-                                            <th>Vehicle No</th>ess</th>
+                                               <th>Licence No</th>
+                                            <th>Vehicle Pickup Address</th>
+                                         
                                             <th>Fuel Type</th>
                                             <th>Rent Type</th>
                                             <th>Rent Amount</th>
