@@ -10,14 +10,15 @@ class control extends model   // step 2
 		model::__construct(); // step 3
 		
 		$url=$_SERVER['PATH_INFO'];
+
+		    $country=$this->select('country');
+			$city=$this->select('city');
+			$category=$this->select('category');  
 		
 		switch($url)
 		{
-		
+
 			case '/index':
-			$country=$this->select('country');
-			$city=$this->select('city');
-			$category=$this->select('category');
 			include_once('index.php');
 			break;
 			
